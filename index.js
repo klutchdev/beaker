@@ -3,36 +3,43 @@ const chalk = require("chalk");
 const Handlebars = require("handlebars");
 const logSymbols = require("log-symbols");
 
-const yoda = chalk.greenBright;
-const vader = chalk.red;
+//?-------------/ UI /-------------//
+// const yoda = chalk.greenBright;
+// const vader = chalk.red;
 
-const done = logSymbols.success;
-const broken = logSymbols.error;
+// const done = logSymbols.success;
+// const broken = logSymbols.error;
 
-const log = console.log;
-const errLog = console.error;
+// const log = console.log;
+// const errLog = console.error;
 
-//-------------/ Imports /-------------//
+//?-------------/ Imports /-------------//
 // React
 const imr = "import React from 'react';";
 // Styled components
 const imst = "import styled from 'styled-components';";
 
-//-------------/ Components /-------------//
+//?-------------/ Components /-------------//
 // Function expression with braces
 const jsxComp =
-  "const {{jsxComponent}} = () => {\n\n  return (\n    <{{styledComponent}}>{{jsxComponent}}</{{styledComponent}}>\n  );\n};";
+  "\n\nconst {{jsxComponent}} = () => {\n\n  return (\n    <{{styledComponent}}>{{jsxComponent}}</{{styledComponent}}>\n  );\n};";
 // Styled component
 const styledComp =
   "\n\nconst {{styledComponent.name}} = styled.{{styledComponent.element}}`\n  margin: 0;\n`;";
 
-//-------------/ Exports /-------------//
+//?-------------/ Exports /-------------//
 // Export jsx component
 const expDefComp = "\n\nexport default {{jsxComponent}};";
 // Export styled component
 const expDefStyled = "\n\nexport default {{styledComponent.name}};";
 
-//-------------/ File system /-------------//
+//?-------------/ Templates /-------------//
+// Jsx
+const jsxCompTemplate = Handlebars.compile(imr, jsxComp, expDefComp);
+// Styled
+const styledCompTemplate = Handlebars.compile(imst, styledComp, expDefStyled);
+
+//?-------------/ File system /-------------//
 // Check if dir exists
 let dirExists = async () => {
   fs.existsSync("src/components/{{jsxComponent}}");
@@ -44,17 +51,20 @@ const mkdir = async () => {
 };
 
 // Create component index.js file
-const createJsxComp = () => {
+const createJsxComp = async () => {
   fs.writeFileSync(
     "src/components/{{jsxComponent}}/index.js",
-    Handlebars.compile(jsxComp)
+    jsxCompTemplate({ component: component })
   );
 };
 
 // Create styled component styled.js file
-const createStyledComp = () => {
-  fs.writeFileSync(
-    "src/components/{{jsxComponent}}/styled.js",
-    Handlebars.compile(styledComp)
-  );
+const createStyledComp = async () => {
+  fs.writeFileSync("src/components/{{jsxComponent}}/styled.js");
+  styledCompTemplate({
+    styledComponent: { name: styledComponent, element: "h1" },
+  });
 };
+
+log(jsxCompTemplate);
+log(styledCompTemplate);
