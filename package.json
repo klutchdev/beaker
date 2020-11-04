@@ -1,0 +1,34 @@
+{
+  "name": "beaker",
+  "version": "1.0.0",
+  "description": "A functional componenent and page scaffolding tool for React and Gatsby ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/klutchdev/beaker.git"
+  },
+  "keywords": [
+    "beaker",
+    "react",
+    "reactjs",
+    "gatsby",
+    "gatsbyjs",
+    "components",
+    "klutch"
+  ],
+  "author": "Kyle \"Klutch\" Leary <klutchdeveloment@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/klutchdev/beaker/issues"
+  },
+  "homepage": "https://github.com/klutchdev/beaker#readme",
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "log-symbols": "^4.0.0",
+    "prompts": "^2.4.0",
+    "update-notifier": "^5.0.1"
+  }
+}
