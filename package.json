@@ -1,14 +1,15 @@
 {
-  "name": "beaker",
-  "version": "1.0.0",
+  "name": "beakerjs",
+  "version": "1.2.0",
   "description": "A functional componenent and page scaffolding tool for React and Gatsby ",
   "main": "index.js",
   "scripts": {
+    "beaker": "beaker",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/klutchdev/beaker.git"
+    "url": "git+https://github.com/klutchdev/beakerjs.git"
   },
   "keywords": [
     "beaker",

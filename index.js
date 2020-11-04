@@ -25,7 +25,7 @@ const imst = "import styled from 'styled-components';";
 //?-------------/ Components /-------------//
 // Function expression with braces
 const jsxComp =
-  "\n\nconst {{jsxComponent}} = () => {\n\n  return (\n    <{{styledComponent.name}}>{{jsxComponent}}</{{styledComponent.name}}>\n  );\n};";
+  "\n\nconst {{jsxComponent}} = () => {\n\n  return (\n    <{{styledComponent}}>{{jsxComponent}}</{{styledComponent}}>\n  );\n};";
 // Styled component
 const styledComp =
   "\n\nconst {{styledComponent.name}} = styled.{{styledComponent.element}}`\n  margin: 0;\n`;";
@@ -52,23 +52,28 @@ let dirExists = async () => {
 
 // Create new dir for generated components
 const mkdir = async () => {
-  fs.mkdirSync(`src/components/${component}`);
+  fs.mkdirSync(`${component}`);
 };
 
 // Create component index.js file
 const createJsxComp = async () => {
   fs.writeFileSync(
-    `src/components/${component}/index.js`,
-    jsxCompTemplate({ jsxComponent: component })
+    `${component}/index.js`,
+    jsxCompTemplate({
+      jsxComponent: component,
+      styledComponent: styledComponent,
+    })
   );
 };
 
 // Create styled component styled.js file
 const createStyledComp = async () => {
-  fs.writeFileSync(`src/components/${component}/styled.js`);
-  styledCompTemplate({
-    styledComponent: { name: styledComponent, element: "h1" },
-  });
+  fs.writeFileSync(
+    `${component}/styled.js`,
+    styledCompTemplate({
+      styledComponent: { name: styledComponent, element: "h1" },
+    })
+  );
 };
 
 // log(jsxCompTemplate({ jsxComponent: component }));
@@ -77,8 +82,11 @@ const createStyledComp = async () => {
 //     styledComponent: { name: styledComponent, element: "h1" },
 //   })
 // );
-if (!dirExists) {
+
+const beaker = () => {
   mkdir();
   createJsxComp();
   createStyledComp();
-}
+};
+
+module.exports(beaker);

@@ -1,31 +1,31 @@
-<h1 text-align="center">🤯 beaker </h1>
+<h1 text-align="center">🤯 beakerjs </h1>
 
 <p>
-  <a href="https://badge.fury.io/js/beaker" target="_blank">
-    <img alt="Version" src="https://badge.fury.io/js/beaker.svg">
+  <a href="https://badge.fury.io/js/beakerjs" target="_blank">
+    <img alt="Version" src="https://badge.fury.io/js/beakerjs.svg">
   </a>
-  <a href="https://github.com/klutchdev/beaker#readme" target="_blank">
+  <a href="https://github.com/klutchdev/beakerjs#readme" target="_blank">
     <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg">
   </a>
-  <a href="https://github.com/klutchdev/beaker/graphs/commit-activity" target="_blank">
+  <a href="https://github.com/klutchdev/beakerjs/graphs/commit-activity" target="_blank">
     <img alt="Maintenance" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg">
   </a>
   <a href="https://travis-ci.com/klutchdev/klutch-generator" target="_blank">
-    <img alt="Version" src="https://travis-ci.com/klutchdev/beaker.svg?branch=master">
+    <img alt="Version" src="https://travis-ci.com/klutchdev/beakerjs.svg?branch=master">
   </a>
   <a href="https://david-dm.org/klutchdev/klutch-generator" target="_blank">
-    <img alt="Version" src="https://david-dm.org/klutchdev/beaker/status.svg">
+    <img alt="Version" src="https://david-dm.org/klutchdev/beakerjs/status.svg">
   </a>
 </p>
 
 > Generates functional components for react and gatsby
 
-### 🍩 [Homepage](https://github.com/klutchdev/beaker)
+### 🍩 [Homepage](https://github.com/klutchdev/beakerjs)
 
 ## Install
 
 ```sh
-npm i beaker
+npm i beakerjs
 ```
 
 ## Usage
@@ -33,7 +33,7 @@ npm i beaker
 > Generate the output locally
 
 ```sh
-npm start
+npm beakerjs
 ```
 
 ## Run tests
@@ -52,7 +52,7 @@ npm test
 
 ## 🦾 Issues and feature requests
 
-Issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/klutchdev/beaker/issues).
+Issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/klutchdev/beakerjs/issues).
 
 ## Show your support
 
@@ -61,4 +61,4 @@ Throw 🍕 if this helped you!
 ## 📝 License
 
 Copyright © 2020 [Kyle Leary](https://github.com/klutchdev).<br />
-This project is [ISC](https://github.com/klutchdev/beaker/blob/master/LICENSE) licensed.
+beakerjs [ISC](https://github.com/klutchdev/beakerjs/blob/master/LICENSE) licensed.
