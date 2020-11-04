@@ -27,6 +27,7 @@
   "homepage": "https://github.com/klutchdev/beaker#readme",
   "dependencies": {
     "chalk": "^4.1.0",
+    "handlebars": "^4.7.6",
     "log-symbols": "^4.0.0",
     "prompts": "^2.4.0",
     "update-notifier": "^5.0.1"
