@@ -1,6 +1,6 @@
 {
   "name": "beakerjs",
-  "version": "1.2.0",
+  "version": "1.4.0",
   "description": "A functional componenent and page scaffolding tool for React and Gatsby ",
   "main": "index.js",
   "scripts": {
@@ -13,6 +13,7 @@
   },
   "keywords": [
     "beaker",
+    "beakerjs",
     "react",
     "reactjs",
     "gatsby",

@@ -7,9 +7,8 @@ const component = "Beaker";
 const styledComponent = "BeakerWrapper";
 
 //?-------------/ UI /-------------//
-// Colors.
-
-const yoda = chalk.greenBright;
+// Colors
+const yoda = chalk.green;
 const vader = chalk.red;
 // Icons
 const done = logSymbols.success;
@@ -21,7 +20,8 @@ const errLog = console.error;
 //?-------------/ Imports /-------------//
 // React
 const imr = "import React from 'react';";
-const imc = `import ${styledComponent} from './styled';`;
+// Styled sibling
+const imc = `\nimport ${styledComponent} from './styled';`;
 // Styled components
 const imst = "import styled from 'styled-components';";
 
@@ -41,7 +41,9 @@ const expDefStyled = "\n\nexport default {{styledComponent.name}};";
 
 //?-------------/ Templates /-------------//
 // Jsx
-const jsxCompTemplate = Handlebars.compile(`${imr}${jsxComp}${expDefComp}`);
+const jsxCompTemplate = Handlebars.compile(
+  `${imr}${imc}${jsxComp}${expDefComp}`
+);
 // Styled
 const styledCompTemplate = Handlebars.compile(
   `${imst}${styledComp}${expDefStyled}`
@@ -84,7 +86,7 @@ const createStyledComp = async () => {
 };
 
 (async function beaker() {
-  mkdir()
+  await mkdir()
     .then(() => {
       createJsxComp()
         .then(() => {
@@ -93,10 +95,10 @@ const createStyledComp = async () => {
           });
         })
         .catch((error) => {
-          errLog(broken, vader("Error creating styled component"), error);
+          errLog(broken, vader("Error creating jsx component"), error);
         });
     })
     .catch((error) => {
-      errLog(broken, vader("Error creating styled component"), error);
+      errLog(broken, vader("Error creating component directory"), error);
     });
 })();
