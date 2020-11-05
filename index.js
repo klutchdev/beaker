@@ -1,24 +1,27 @@
 const fs = require("fs");
-// const chalk = require("chalk");
+const chalk = require("chalk");
 const Handlebars = require("handlebars");
-// const logSymbols = require("log-symbols");
+const logSymbols = require("log-symbols");
 
 const component = "Beaker";
 const styledComponent = "BeakerWrapper";
 
 //?-------------/ UI /-------------//
-// const yoda = chalk.greenBright;
-// const vader = chalk.red;
+// Colors.
 
-// const done = logSymbols.success;
-// const broken = logSymbols.error;
-
+const yoda = chalk.greenBright;
+const vader = chalk.red;
+// Icons
+const done = logSymbols.success;
+const broken = logSymbols.error;
+// Logs
 const log = console.log;
-// const errLog = console.error;
+const errLog = console.error;
 
 //?-------------/ Imports /-------------//
 // React
 const imr = "import React from 'react';";
+const imc = `import ${styledComponent} from './styled';`;
 // Styled components
 const imst = "import styled from 'styled-components';";
 
@@ -47,12 +50,14 @@ const styledCompTemplate = Handlebars.compile(
 //?-------------/ File system /-------------//
 // Check if dir exists
 let dirExists = async () => {
-  fs.existsSync("src/components/{{jsxComponent}}");
+  fs.existsSync(`src/components/${component}`);
+  errLog(broken, vader(`${component} already exists!`));
 };
 
 // Create new dir for generated components
 const mkdir = async () => {
   fs.mkdirSync(`${component}`);
+  log(done, yoda(`Created directory for ${component}`));
 };
 
 // Create component index.js file
@@ -64,6 +69,7 @@ const createJsxComp = async () => {
       styledComponent: styledComponent,
     })
   );
+  log(done, yoda(`Created index.js for ${component}`));
 };
 
 // Create styled component styled.js file
@@ -74,19 +80,23 @@ const createStyledComp = async () => {
       styledComponent: { name: styledComponent, element: "h1" },
     })
   );
+  log(done, yoda(`Created styled.js for ${styledComponent}`));
 };
 
-// log(jsxCompTemplate({ jsxComponent: component }));
-// log(
-//   styledCompTemplate({
-//     styledComponent: { name: styledComponent, element: "h1" },
-//   })
-// );
-
-const beaker = () => {
-  mkdir();
-  createJsxComp();
-  createStyledComp();
-};
-
-module.exports(beaker);
+(async function beaker() {
+  mkdir()
+    .then(() => {
+      createJsxComp()
+        .then(() => {
+          createStyledComp().catch((error) => {
+            errLog(broken, vader("Error creating styled component"), error);
+          });
+        })
+        .catch((error) => {
+          errLog(broken, vader("Error creating styled component"), error);
+        });
+    })
+    .catch((error) => {
+      errLog(broken, vader("Error creating styled component"), error);
+    });
+})();
